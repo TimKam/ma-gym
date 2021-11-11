@@ -18,8 +18,8 @@ class PongDuel(gym.Env):
 
     metadata = {'render.modes': ['human', 'rgb_array']}
 
-    def __init__(self, step_cost=0, reward=1, max_rounds=10):
-        self._grid_shape = (40, 30)
+    def __init__(self, step_cost=0, reward=1, max_rounds=20):
+        self._grid_shape = (13, 15)
         self.n_agents = 2
         self.reward = reward
         self._max_rounds = max_rounds
@@ -101,7 +101,7 @@ class PongDuel(gym.Env):
         return _obs
 
     def __init_ball_pos(self):
-        self.ball_pos = [self.np_random.randint(5, self._grid_shape[0] - 5), self.np_random.randint(10, self._grid_shape[1] - 10)]
+        self.ball_pos = [self.np_random.randint(5, self._grid_shape[0] - 5), self.np_random.randint(5, self._grid_shape[1] - 5)]
         self.curr_ball_dir = self.np_random.choice(['NW', 'SW', 'SE', 'NE'])
 
     def reset(self):
@@ -237,10 +237,10 @@ class PongDuel(gym.Env):
 
         # if ball is beyond paddle, initiate a new round
         if self.ball_pos[1] < 1:
-            rewards = [0, self.reward]
+            rewards = [-self.reward, self.reward]
             self.__rounds += 1
         elif self.ball_pos[1] >= (self._grid_shape[1] - 1):
-            rewards = [self.reward, 0]
+            rewards = [self.reward, -self.reward]
             self.__rounds += 1
 
         if self.__rounds == self._max_rounds:
