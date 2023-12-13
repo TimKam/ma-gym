@@ -9,7 +9,7 @@ extras = {
 }
 
 # Meta dependency groups.
-extras['all'] = [item for group in extras.values() for item in group]
+# extras['all'] = [item for group in extras.values() for item in group]
 
 setup(name='ma_gym',
       version='0.0.8',
