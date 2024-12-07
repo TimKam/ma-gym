@@ -22,7 +22,6 @@ setup(name='ma_gym',
           'pillow>=7.2.0',
           'six>=1.16.0'
       ],
-      tests_require=extras['test'],
       python_requires='>=3.6',
       classifiers=[
           'Programming Language :: Python :: 3.6',
