@@ -3,14 +3,6 @@ from os import path
 import setuptools
 from setuptools import setup
 
-extras = {
-    'test': ['pytest', 'pytest_cases'],
-    'develop': ['imageio'],
-}
-
-# Meta dependency groups.
-extras['all'] = [item for group in extras.values() for item in group]
-
 setup(name='ma_gym',
       version='0.0.8',
       description='A collection of multi agent environments based on OpenAI gym.',
@@ -30,7 +22,6 @@ setup(name='ma_gym',
           'pillow>=7.2.0',
           'six>=1.16.0'
       ],
-      extras_require=extras,
       tests_require=extras['test'],
       python_requires='>=3.6',
       classifiers=[
